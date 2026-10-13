@@ -1,0 +1,23 @@
+:root {
+  --primary: #c8102e;
+  --primary-hover: #a50d26;
+  --primary-soft: #fae9ed;
+  --secondary: #202124;
+  --accent: #e5ad36;
+  --bg-color: #f6f5f2;
+  --bg-strong: #eeeae4;
+  --card-bg: #ffffff;
+  --card-strong: #ffffff;
+  --text-main: #202124;
+  --text-muted: #6b6a68;
+  --border-color: #e6e2dd;
+  --danger: #b42335;
+  --success: #18794e;
+  --warning: #a76600;
+  --radius: 14px;
+  --radius-sm: 9px;
+  --shadow: 0 14px 36px rgba(32, 33, 36, 0.08);
+  --shadow-soft: 0 8px 22px rgba(200, 16, 46, 0.1);
+  --transition: all 0.22s ease;
+  --container: 1200px;
+}

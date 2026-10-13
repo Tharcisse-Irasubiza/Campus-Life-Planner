@@ -1,0 +1,12 @@
+[
+  {"id":"txn_0001","description":"Lunch at cafeteria","amount":12.50,"category":"Food","date":"2026-03-01","createdAt":"2026-03-01T08:00:00.000Z","updatedAt":"2026-03-01T08:00:00.000Z"},
+  {"id":"txn_0002","description":"Chemistry textbook","amount":89.99,"category":"Books","date":"2026-02-20","createdAt":"2026-02-20T08:00:00.000Z","updatedAt":"2026-02-20T08:00:00.000Z"},
+  {"id":"txn_0003","description":"Bus pass monthly","amount":45.00,"category":"Transport","date":"2026-03-02","createdAt":"2026-03-02T08:00:00.000Z","updatedAt":"2026-03-02T08:00:00.000Z"},
+  {"id":"txn_0004","description":"Coffee coffee break","amount":8.75,"category":"Entertainment","date":"2026-03-03","createdAt":"2026-03-03T08:00:00.000Z","updatedAt":"2026-03-03T08:00:00.000Z"},
+  {"id":"txn_0005","description":"Tuition deposit","amount":1250.00,"category":"Fees","date":"2026-01-15","createdAt":"2026-01-15T08:00:00.000Z","updatedAt":"2026-01-15T08:00:00.000Z"},
+  {"id":"txn_0006","description":"Snacks from vending machine","amount":3.20,"category":"Food","date":"2026-03-04","createdAt":"2026-03-04T08:00:00.000Z","updatedAt":"2026-03-04T08:00:00.000Z"},
+  {"id":"txn_0007","description":"Subway ticket","amount":2.50,"category":"Transport","date":"2026-03-05","createdAt":"2026-03-05T08:00:00.000Z","updatedAt":"2026-03-05T08:00:00.000Z"},
+  {"id":"txn_0008","description":"Movie night ticket","amount":14.00,"category":"Entertainment","date":"2026-03-06","createdAt":"2026-03-06T08:00:00.000Z","updatedAt":"2026-03-06T08:00:00.000Z"},
+  {"id":"txn_0009","description":"Notebook and pens","amount":6.49,"category":"Books","date":"2026-03-07","createdAt":"2026-03-07T08:00:00.000Z","updatedAt":"2026-03-07T08:00:00.000Z"},
+  {"id":"txn_0010","description":"Cafeteria dinner","amount":15.00,"category":"Food","date":"2026-03-08","createdAt":"2026-03-08T08:00:00.000Z","updatedAt":"2026-03-08T08:00:00.000Z"}
+]

@@ -1,0 +1,240 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Campus Life Planner</title>
+  <link rel="stylesheet" href="styles/variables.css">
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/components.css">
+</head>
+<body>
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header role="banner" class="site-header">
+    <div class="brand">
+      <span class="brand-icon" aria-hidden="true">ALU</span>
+      <h1 class="brand-title">Campus Life Planner</h1>
+    </div>
+    <nav role="navigation" aria-label="Main Navigation">
+      <ul class="nav-list">
+        <li><a href="#dashboard" class="nav-link active" data-target="dashboard">Dashboard</a></li>
+        <li><a href="#records" class="nav-link" data-target="records">Records</a></li>
+        <li><button type="button" class="nav-link nav-action" data-open-task-dialog>+ Add task</button></li>
+        <li><a href="#settings" class="nav-link" data-target="settings">Settings</a></li>
+        <li><a href="#about" class="nav-link" data-target="about">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main-content" tabindex="-1" class="site-main">
+    <div id="sr-announcer" class="sr-only" aria-live="polite"></div>
+
+    <dialog id="task-dialog" class="task-dialog" aria-labelledby="form-heading">
+      <div class="dialog-shell">
+        <div class="dialog-heading">
+          <div>
+            <p class="dialog-eyebrow">CAMPUS LIFE PLANNER</p>
+            <h2 id="form-heading">Add a task</h2>
+            <p class="dialog-subtitle">Make room for what matters.</p>
+          </div>
+          <button type="button" class="dialog-close" data-close-task-dialog aria-label="Close dialog">&times;</button>
+        </div>
+
+        <form id="task-form" novalidate class="app-form">
+          <input type="hidden" id="record-id">
+
+          <div class="form-group">
+            <label for="title-input">Task title</label>
+            <input type="text" id="title-input" required aria-describedby="title-error" class="form-input" placeholder="e.g. Prepare biology presentation">
+            <span id="title-error" class="error-msg" role="status"></span>
+          </div>
+
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="duration-input">Duration <span class="label-hint">minutes</span></label>
+              <input type="number" id="duration-input" min="0" step="5" required aria-describedby="duration-error" class="form-input" placeholder="75">
+              <span id="duration-error" class="error-msg" role="status"></span>
+            </div>
+
+            <div class="form-group">
+              <label for="due-date-input">Due date</label>
+              <input type="date" id="due-date-input" required aria-describedby="due-date-error" class="form-input">
+              <span id="due-date-error" class="error-msg" role="status"></span>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="tag-input">Category</label>
+            <input type="text" id="tag-input" required aria-describedby="tag-error" class="form-input" list="tag-suggestions" placeholder="Select or type a category">
+            <datalist id="tag-suggestions">
+              <option value="Academics"></option>
+              <option value="Study Group"></option>
+              <option value="Events"></option>
+              <option value="Wellness"></option>
+              <option value="Volunteering"></option>
+              <option value="Career"></option>
+            </datalist>
+            <span id="tag-error" class="error-msg" role="status"></span>
+          </div>
+
+          <div class="dialog-actions">
+            <button type="button" class="btn-quiet" data-close-task-dialog>Cancel</button>
+            <button type="submit" class="btn-primary">Save task</button>
+          </div>
+        </form>
+      </div>
+    </dialog>
+
+    <section id="dashboard" class="app-section active" aria-labelledby="dashboard-heading">
+      <div class="section-header">
+        <div>
+          <p class="section-eyebrow">ALU · STUDENT LIFE</p>
+          <h2 id="dashboard-heading">Your week, in focus.</h2>
+          <p class="subtitle">Keep tabs on tasks, study time, and this week’s workload.</p>
+        </div>
+        <button type="button" class="btn-primary section-cta" data-open-task-dialog>+ Plan a task</button>
+      </div>
+
+      <div class="stats-grid">
+        <div class="stat-card">
+          <span class="stat-icon" aria-hidden="true">📋</span>
+          <div class="stat-content">
+            <h3>Total Tasks</h3>
+            <p id="stat-count">0</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-icon" aria-hidden="true">⏱️</span>
+          <div class="stat-content">
+            <h3>Total Time</h3>
+            <p id="stat-total">0m</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <span class="stat-icon" aria-hidden="true">🏷️</span>
+          <div class="stat-content">
+            <h3>Top Tag</h3>
+            <p id="stat-top-tag">-</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card trend-card">
+        <h3>Last 7 Days</h3>
+        <div id="trend-chart" class="trend-chart" aria-label="Seven day task trend"></div>
+      </div>
+
+      <div class="card cap-card">
+        <h3>Weekly Study Target</h3>
+        <p class="card-desc">Set a goal in minutes to monitor progress and stay on pace.</p>
+        <div class="cap-form-group">
+          <label for="target-minutes">Target (minutes):</label>
+          <input type="number" id="target-minutes" value="240" min="0" class="form-input">
+        </div>
+        <div id="cap-status-msg" class="alert-box" aria-live="polite"></div>
+      </div>
+    </section>
+
+    <section id="records" class="app-section" aria-labelledby="records-heading">
+      <div class="section-header">
+        <div>
+          <p class="section-eyebrow">YOUR PLANNER</p>
+          <h2 id="records-heading">Task records</h2>
+          <p class="subtitle">Search, sort, and highlight tasks using live regex patterns.</p>
+        </div>
+        <button type="button" class="btn-primary section-cta" data-open-task-dialog>+ Add task</button>
+      </div>
+
+      <div class="controls-card card">
+        <div class="controls-bar">
+          <div class="search-wrapper">
+            <label for="search-input" class="sr-only">Search tasks</label>
+            <input type="text" id="search-input" placeholder="Live regex search (e.g. study|@lab|\b\d{2}:\d{2}\b)" class="form-input">
+          </div>
+          <div class="controls-actions">
+            <label class="checkbox-label">
+              <input type="checkbox" id="case-sensitive-toggle"> Case sensitive
+            </label>
+            <select id="sort-select" aria-label="Sort records" class="form-select">
+              <option value="due-desc">Due Date (Newest)</option>
+              <option value="due-asc">Due Date (Oldest)</option>
+              <option value="title-az">Title (A-Z)</option>
+              <option value="duration-desc">Duration (High to Low)</option>
+              <option value="duration-asc">Duration (Low to High)</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="card table-card">
+        <div class="table-responsive">
+          <table id="records-table">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Duration</th>
+                <th>Tag</th>
+                <th>Due Date</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="table-body"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section id="settings" class="app-section" aria-labelledby="settings-heading">
+      <div class="section-header">
+        <h2 id="settings-heading">Settings & Data Management</h2>
+        <p class="subtitle">Import backups, export sessions, and convert time units.</p>
+      </div>
+
+      <div class="settings-grid">
+        <div class="card">
+          <h3>Backup & Restore</h3>
+          <p class="card-desc">Export your task list or import a validated JSON backup.</p>
+          <div class="btn-group">
+            <button id="export-btn" class="btn-secondary" type="button">Export JSON</button>
+            <label class="btn-secondary file-upload-label">
+              Import JSON
+              <input type="file" id="import-file" accept=".json" hidden>
+            </label>
+          </div>
+        </div>
+
+        <div class="card">
+          <h3>Time Conversion</h3>
+          <p class="card-desc">Quickly convert a minute value into hours and fractions.</p>
+          <div class="form-group">
+            <label for="minutes-conversion">Minutes</label>
+            <input type="number" id="minutes-conversion" min="0" step="5" value="90" class="form-input">
+          </div>
+          <div class="conversion-output" aria-live="polite">
+            <strong>Hours:</strong> <span id="hours-output">1.50h</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="app-section" aria-labelledby="about-heading">
+      <div class="section-header">
+        <h2 id="about-heading">About This App</h2>
+        <p class="subtitle">A mobile-first planner built with semantic HTML, regex validation, local storage, and accessible interactions.</p>
+      </div>
+
+      <div class="card about-card">
+        <p><strong>Purpose:</strong> The Campus Life Planner helps students organize classes, deadlines, study sessions, and campus events while tracking workload with regex-powered search and plain JavaScript.</p>
+        <p class="contact-info"><strong>Developer Contact:</strong> <a href="mailto:t.irasubiza@alustudent.com">t.irasubiza@alustudent.com</a> | <a href="https://github.com/Tharcisse-Irasubiza" target="_blank" rel="noopener">GitHub Profile</a> | <a href="https://github.com/Tharcisse-Irasubiza/Campus-Life-Planner" target="_blank" rel="noopener">Project Repository</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer role="contentinfo" class="site-footer">
+    <p>&copy; 2026 Campus Life Planner. Designed for accessibility, responsive layouts, and efficient task tracking.</p>
+  </footer>
+
+  <script type="module" src="scripts/app.js"></script>
+</body>
+</html>
