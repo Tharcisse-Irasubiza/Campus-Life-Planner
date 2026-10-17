@@ -17,9 +17,9 @@
   <p>Running assertions checks for regrex validation and planner-safe search behavior.</p>
   <ul id="test-results"></ul>
 
-  <script type="modules">
+  <script type="module">
     import { rules } from './scripts/validators.js';
-    import { compileRegex } from './scripts/search.js';
+    import { compileRegex, highlight } from './scripts/search.js';
 
     const results = document.getElementById('test-results');
 
@@ -30,8 +30,8 @@
       results.appendChild(li);
     }
 
-    assert('Title regex for bids leading spaces', !rules.title.test('Lab report'));
-    assert('Title regex for bids trailing spaces', !rules.title.test('Lab report '));
+    assert('Title regex rejects leading spaces', !rules.title.test(' Lab report'));
+    assert('Title regex rejects trailing spaces', !rules.title.test('Lab report '));
     assert('Title regex allows standard text', rules.title.test('Lab report draft'));
     assert('Duration regex validates a valid minute value', rules.duration.test('45'));
     assert('Duration regex rejects a non-numeric string', !rules.duration.test('ninety'));
@@ -41,6 +41,9 @@
     assert('Advanced regex catches repeated words', rules.duplicateWords.test('Study study notes'));
     assert('Safe regex compiler parses valid patterns', compileRegex('study') instanceof RegExp);
     assert('Safe regex compiler handles malformed patterns safely', compileRegex('[unclosed') === null);
+    assert('Highlighting supports capture groups', highlight('study study', /(study)/gi) === '<mark>study</mark> <mark>study</mark>');
+    assert('Highlighting escapes task-provided HTML', highlight('<script>x<\/script>', /script/gi) === '&lt;<mark>script</mark>&gt;x&lt;/<mark>script</mark>&gt;');
+    assert('Highlighting escapes unfiltered task text', highlight('<script>x<\/script>', null) === '&lt;script&gt;x&lt;/script&gt;');
   </script>
 </body>
 </html>

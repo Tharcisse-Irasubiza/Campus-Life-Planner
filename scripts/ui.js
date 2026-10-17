@@ -110,6 +110,7 @@ export function renderTable() {
   const filteredRecords = records.filter((record) => {
     if (!re) return true;
     const haystack = [record.title, record.tag, record.dueDate, String(record.duration)].join(' ');
+    re.lastIndex = 0;
     return re.test(haystack);
   });
 
@@ -136,17 +137,27 @@ export function renderTable() {
       <td><strong>${highlightedTitle}</strong></td>
       <td>${formatDuration(record.duration)}</td>
       <td><span class="badge">${highlightedTag}</span></td>
-      <td>${record.dueDate}</td>
+      <td>${escapeHTML(record.dueDate)}</td>
       <td>
         <div class="table-actions">
-          <button type="button" class="btn-secondary table-button" data-action="edit" data-id="${record.id}">Edit</button>
-          <button type="button" class="btn-secondary table-button danger" data-action="delete" data-id="${record.id}">Delete</button>
+          <button type="button" class="btn-secondary table-button" data-action="edit" data-id="${escapeHTML(record.id)}">Edit</button>
+          <button type="button" class="btn-secondary table-button danger" data-action="delete" data-id="${escapeHTML(record.id)}">Delete</button>
         </div>
       </td>
     `;
 
     tbody.appendChild(row);
   });
+}
+
+function escapeHTML(value) {
+  return String(value).replace(/[&<>"']/g, (character) => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;'
+  })[character]);
 }
 
 export function initEventListeners() {

@@ -5,8 +5,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Campus Life Planner</title>
+  <link rel="stylesheet" href="styles/variables.css">
   <link rel="stylesheet" href="styles/main.css">
-  <link rel="stylesheet" href="styles/components.css">
   <link rel="stylesheet" href="styles/components.css">
 </head>
 
@@ -32,7 +32,7 @@
   <main id="main-content" tabindex="-1" class="site-main">
     <div id="sr-announcer" class="sr-only" aria-live="polite"></div>
 
-    <dialog id="task-dialog" class="task-dialogo" aria-labelledby="form-heading">
+    <dialog id="task-dialog" class="task-dialog" aria-labelledby="form-heading">
       <div class="dialog-shell">
         <div class="dialog-heading">
           <div>
@@ -81,11 +81,12 @@
               </datalist>
               <span id="tag-error" class="error-msg" role="status"></span>
             </div>
+          </div>
 
-            <div class="dialog-actions">
-              <button type="button" class="btn-quiet" data-close-task-dialog>Cancel</button>
-              <button type="submit" class="btn-primary">Save task</button>
-            </div>
+          <div class="dialog-actions">
+            <button type="button" class="btn-quiet" data-close-task-dialog>Cancel</button>
+            <button type="submit" class="btn-primary">Save task</button>
+          </div>
         </form>
       </div>
     </dialog>
