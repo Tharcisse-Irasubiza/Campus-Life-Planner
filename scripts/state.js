@@ -1,4 +1,4 @@
-﻿import { loadRecords, saveRecords } from './storage.js';
+﻿import { loadRecords, SaveRecords } from './storage.js';
 
 const defaultRecords = [
   { id: 'plan_101', title: 'Biology revision quiz', dueDate: '2026-10-14', duration: 75, tag: 'Academics', createdAt: '2026-10-01T08:00:00.000Z', updatedAt: '2026-10-01T08:00:00.000Z' },
@@ -16,7 +16,7 @@ const defaultRecords = [
 const savedRecords = loadRecords();
 
 let state = {
-  records: savedRecords.length ? savedRecords : defaultRecords,
+  records: savedRecords.length > 0 ? savedRecords : defaultRecords,
   filter: '',
   caseSensitive: false,
   sort: 'due-desc',
@@ -24,7 +24,7 @@ let state = {
   editingId: null
 };
 
-export function getState() {
+export function getstate() {
   return state;
 }
 

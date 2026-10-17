@@ -1,13 +1,15 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Campus Life Planner</title>
-  <link rel="stylesheet" href="styles/variables.css">
   <link rel="stylesheet" href="styles/main.css">
   <link rel="stylesheet" href="styles/components.css">
+  <link rel="stylesheet" href="styles/components.css">
 </head>
+
 <body>
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
@@ -30,7 +32,7 @@
   <main id="main-content" tabindex="-1" class="site-main">
     <div id="sr-announcer" class="sr-only" aria-live="polite"></div>
 
-    <dialog id="task-dialog" class="task-dialog" aria-labelledby="form-heading">
+    <dialog id="task-dialog" class="task-dialogo" aria-labelledby="form-heading">
       <div class="dialog-shell">
         <div class="dialog-heading">
           <div>
@@ -45,43 +47,45 @@
           <input type="hidden" id="record-id">
 
           <div class="form-group">
-            <label for="title-input">Task title</label>
-            <input type="text" id="title-input" required aria-describedby="title-error" class="form-input" placeholder="e.g. Prepare biology presentation">
+            <label for="title-input">Task Title</label>
+            <input type="text" id="title-input" required aria-describedby="title-error" class="form-input"
+              placeholder="eg. prepare biology presentation">
             <span id="title-error" class="error-msg" role="status"></span>
           </div>
 
           <div class="form-grid">
             <div class="form-group">
-              <label for="duration-input">Duration <span class="label-hint">minutes</span></label>
-              <input type="number" id="duration-input" min="0" step="5" required aria-describedby="duration-error" class="form-input" placeholder="75">
+              <label for="duration-input">Duration<span class="label-hint">minutes</span></label>
+              <input type="number" id="duration-input" required aria-describedby="duration-error" min="0" step="1"
+                class="form-input" placeholder="eg. 60">
               <span id="duration-error" class="error-msg" role="status"></span>
             </div>
 
             <div class="form-group">
-              <label for="due-date-input">Due date</label>
+              <label for="due-date-input">Due Date</label>
               <input type="date" id="due-date-input" required aria-describedby="due-date-error" class="form-input">
               <span id="due-date-error" class="error-msg" role="status"></span>
             </div>
-          </div>
 
-          <div class="form-group">
-            <label for="tag-input">Category</label>
-            <input type="text" id="tag-input" required aria-describedby="tag-error" class="form-input" list="tag-suggestions" placeholder="Select or type a category">
-            <datalist id="tag-suggestions">
-              <option value="Academics"></option>
-              <option value="Study Group"></option>
-              <option value="Events"></option>
-              <option value="Wellness"></option>
-              <option value="Volunteering"></option>
-              <option value="Career"></option>
-            </datalist>
-            <span id="tag-error" class="error-msg" role="status"></span>
-          </div>
+            <div class="form-group">
+              <label for="tag-input">Category</label>
+              <input type="text" id="tag-input" required aria-describedby="tag-error" class="form-input"
+                list="tag-suggestions" placeholder="Select or type a category">
+              <datalist id="tag-suggestions">
+                <option value="Academics"></option>
+                <option value="Study Group"></option>
+                <option value="Events"></option>
+                <option value="Wellness"></option>
+                <option value="Volunteering"></option>
+                <option value="Career"></option>
+              </datalist>
+              <span id="tag-error" class="error-msg" role="status"></span>
+            </div>
 
-          <div class="dialog-actions">
-            <button type="button" class="btn-quiet" data-close-task-dialog>Cancel</button>
-            <button type="submit" class="btn-primary">Save task</button>
-          </div>
+            <div class="dialog-actions">
+              <button type="button" class="btn-quiet" data-close-task-dialog>Cancel</button>
+              <button type="submit" class="btn-primary">Save task</button>
+            </div>
         </form>
       </div>
     </dialog>
@@ -150,7 +154,8 @@
         <div class="controls-bar">
           <div class="search-wrapper">
             <label for="search-input" class="sr-only">Search tasks</label>
-            <input type="text" id="search-input" placeholder="Live regex search (e.g. study|@lab|\b\d{2}:\d{2}\b)" class="form-input">
+            <input type="text" id="search-input" placeholder="Live regex search (e.g. study|@lab|\b\d{2}:\d{2}\b)"
+              class="form-input">
           </div>
           <div class="controls-actions">
             <label class="checkbox-label">
@@ -221,12 +226,18 @@
     <section id="about" class="app-section" aria-labelledby="about-heading">
       <div class="section-header">
         <h2 id="about-heading">About This App</h2>
-        <p class="subtitle">A mobile-first planner built with semantic HTML, regex validation, local storage, and accessible interactions.</p>
+        <p class="subtitle">A mobile-first planner built with semantic HTML, regex validation, local storage, and
+          accessible interactions.</p>
       </div>
 
       <div class="card about-card">
-        <p><strong>Purpose:</strong> The Campus Life Planner helps students organize classes, deadlines, study sessions, and campus events while tracking workload with regex-powered search and plain JavaScript.</p>
-        <p class="contact-info"><strong>Developer Contact:</strong> <a href="mailto:t.irasubiza@alustudent.com">t.irasubiza@alustudent.com</a> | <a href="https://github.com/Tharcisse-Irasubiza" target="_blank" rel="noopener">GitHub Profile</a> | <a href="https://github.com/Tharcisse-Irasubiza/Campus-Life-Planner" target="_blank" rel="noopener">Project Repository</a></p>
+        <p><strong>Purpose:</strong> The Campus Life Planner helps students organize classes, deadlines, study sessions,
+          and campus events while tracking workload with regex-powered search and plain JavaScript.</p>
+        <p class="contact-info"><strong>Developer Contact:</strong> <a
+            href="mailto:t.irasubiza@alustudent.com">t.irasubiza@alustudent.com</a> | <a
+            href="https://github.com/Tharcisse-Irasubiza" target="_blank" rel="noopener">GitHub Profile</a> | <a
+            href="https://github.com/Tharcisse-Irasubiza/Campus-Life-Planner" target="_blank" rel="noopener">Project
+            Repository</a></p>
       </div>
     </section>
   </main>
@@ -237,4 +248,5 @@
 
   <script type="module" src="scripts/app.js"></script>
 </body>
+
 </html>

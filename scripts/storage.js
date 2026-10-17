@@ -3,7 +3,7 @@ const KEY = 'app:campus_life_data';
 export const loadRecords = () => {
   try {
     const data = localStorage.getItem(KEY);
-    const parsed = data ? JSON.parse(data) : [];
+    const parsed = data ? JSON.parse(data): [];
     return Array.isArray(parsed) ? parsed : [];
   } catch (e) {
     console.error('Failed to load records from localStorage', e);
@@ -22,11 +22,11 @@ export const saveRecords = (data) => {
 export const validateJSONStructure = (jsonString) => {
   try {
     const parsed = JSON.parse(jsonString);
-    if (!Array.isArray(parsed)) return { valid: false, error: 'Root JSON structure must be an array.' };
+    if (!Array.isArray(parsed)) return { valid: false, error: 'Root Json structure must be an array.'};
 
     for (const item of parsed) {
       if (!item || typeof item !== 'object') {
-        return { valid: false, error: 'Each item must be an object.' };
+        return {valid: false, error: 'Each item must be an object' };
       }
 
       if (!item.id || !item.title || typeof item.duration !== 'number' || !item.tag || !item.dueDate) {

@@ -28,7 +28,7 @@ export const validateField = (fieldName, value) => {
   }
 
   if (rules[fieldName]) {
-    return rules[fieldName].test(safeValue) ? '' : `Invalid format for ${fieldName}.`;
+    return rules[fieldName].test(safeValue) ? '' : 'Invalid format for ${fieldName}.';
   }
 
   return '';
